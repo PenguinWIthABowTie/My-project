@@ -32,7 +32,7 @@ public class Read_UI_Value_Sample : MonoBehaviour
     public void Start()
     {
         textSlider.text = (miSlider.value * 100).ToString("F0") + "%";
-        languageChanger = GetComponent<LanguageChanger>();
+        //languageChanger = GetComponent<LanguageChanger>();
     }
 
     public Slider miSlider;
@@ -44,20 +44,23 @@ public class Read_UI_Value_Sample : MonoBehaviour
     }
 
 
-    private LanguageChanger languageChanger;
+    //private LanguageSelector languageSelector;
 
-    public void DropdownChange(int index)
-    {
-        switch (index)
-        {
-            case 0: languageChanger.SetEnglish();
-                break;
-            case 1: languageChanger.SetSpanish();
-                break;
-            case 2: languageChanger.SetUkrainan();
-                break;
-        }
-    }
+    //public void DropdownChange(int index)
+    //{
+    //    switch (index)
+    //    {
+    //        case 0:
+    //            languageSelector.SetEnglish();
+    //            break;
+    //        case 1:
+    //            languageSelector.SetSpanish();
+    //            break;
+    //        case 2:
+    //            languageSelector.SetUkrainan();
+    //            break;
+    //    }
+    //}
 
 
 
