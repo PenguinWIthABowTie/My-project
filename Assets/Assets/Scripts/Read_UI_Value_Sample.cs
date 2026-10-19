@@ -10,37 +10,37 @@ public class Read_UI_Value_Sample : MonoBehaviour
 {
     //Ejemplo Toggle
 
-    public Toggle miToggle;
+    //public Toggle miToggle;
 
 
-    public void OnToggleChange()
-    {
+    //public void OnToggleChange()
+    //{
 
-        if (miToggle.isOn == true)
-        {
-            Debug.Log("Mi Toggle esta Verdadero!");
-        }
-        else
-        {
-            Debug.Log("Mi toggle ha cambiado a Falso!");
-        }
+    //    if (miToggle.isOn == true)
+    //    {
+    //        Debug.Log("Mi Toggle esta Verdadero!");
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("Mi toggle ha cambiado a Falso!");
+    //    }
 
-    }
+    //}
 
     //Ejemplo slider
 
     public void Start()
     {
-        textSlider.text = (miSlider.value * 100).ToString("F0") + "%";
+        textSlider.text = (miSlider.value * 100).ToString("F1") + "%";
         //languageChanger = GetComponent<LanguageChanger>();
     }
 
     public Slider miSlider;
-    public Text textSlider;
+    public TMP_Text textSlider;
 
     public void OnSliderChanged()
     { 
-        textSlider.text = (miSlider.value * 100).ToString("F0") + "%";
+        textSlider.text = (miSlider.value * 100).ToString("F1") + "%";
     }
 
 
