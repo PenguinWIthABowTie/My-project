@@ -20,8 +20,8 @@ public class CameraRotationController : MonoBehaviour
     {
         
 
-        pivotInputX -= Input.GetAxisRaw("Mouse X") * rotationSpeed;
-        pivotInputZ -= Input.GetAxisRaw("Mouse Y") * rotationSpeed;
+        pivotInputX -= Input.GetAxisRaw("Mouse X") * (rotationSpeed * Time.deltaTime);
+        pivotInputZ -= Input.GetAxisRaw("Mouse Y") * (rotationSpeed * Time.deltaTime);
 
         //Limitar el valor de la roatcion para que siempre este los valores -90 y 90
         pivotInputX = Mathf.Clamp(pivotInputX, -0.3f, 0.3f);
