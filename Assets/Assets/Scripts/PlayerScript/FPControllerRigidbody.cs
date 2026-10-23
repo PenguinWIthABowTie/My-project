@@ -36,14 +36,15 @@ public class FPControllerRigidbody : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && groundChecker.isGrounded == true)
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Force);
+            Debug.Log("*");
+            rb.AddForce(Vector3.up * (jumpForce * 10), ForceMode.Force);
 
         }
 
 
                             //ROTACION//
 
-        //Rotacion horizontal
+            //Rotacion horizontal
         transform.Rotate(new Vector3(0, Input.GetAxisRaw("Mouse X") * rotationSpeed, 0));
 
         //Al valor actual de rotacion le sumamos o restamos segun si subimos o bajamos el rato
