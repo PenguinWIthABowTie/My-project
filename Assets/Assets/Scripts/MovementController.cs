@@ -11,16 +11,20 @@ public class MovementController : MonoBehaviour
     //public float verticalVelocity;
     //public float RotationSmoothTime = 0.12f;
     private Rigidbody rb;
+    private GroundChecker groundChecker;
 
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float jumpForce = 20f;
     [SerializeField] private float rotationSpeed = 10f;
     [SerializeField] private Transform cameraTransform;
     private Vector3 moveDirection;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        groundChecker = GetComponent<GroundChecker>();
     }
 
     // Update is called once per frame
@@ -47,7 +51,12 @@ public class MovementController : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
 
+        if (Input.GetButtonDown("Jump") && groundChecker.isGrounded == true)
+        {
+            Debug.Log("*");
+            rb.AddForce(Vector3.up * (jumpForce * 10), ForceMode.Force);
 
+        }
 
         //input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
