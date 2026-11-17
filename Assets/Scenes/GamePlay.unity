@@ -3447,12 +3447,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5395a5e778a009c459906fd07ff07c66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  detectionRange: 12.2
-  sphereRadius: 3.84
+  playerCamera: {fileID: 1165016463}
+  interactionRange: 3.5
+  viewAngle: 90
   interactLayers:
     serializedVersion: 2
     m_Bits: 128
-  detectedInteractable: {fileID: 0}
 --- !u!1 &1453278359
 GameObject:
   m_ObjectHideFlags: 0
@@ -4896,32 +4896,14 @@ GameObject:
   - component: {fileID: 1950559932}
   - component: {fileID: 1950559931}
   - component: {fileID: 1950559930}
-  - component: {fileID: 1950559929}
   - component: {fileID: 1950559934}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1950559929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1950559928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2a78b2277c9f8e4f90075e0422be897, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  sphereRadius: 3
-  inZone: 0
-  mask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!136 &1950559930
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5029,7 +5011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec492259dca430440b038b1bc4ff4002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  DialogueData: {fileID: 0}
+  dialogueData: {fileID: 0}
   dialoguePanel: {fileID: 0}
   dialogueText: {fileID: 0}
   nameText: {fileID: 0}
