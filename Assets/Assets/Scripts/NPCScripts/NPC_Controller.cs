@@ -2,15 +2,26 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class NPC : MonoBehaviour, Interactable
+public class NPC_Controller : MonoBehaviour, Interactable
 {
     public NPCDialogue dialogueData;
     public GameObject dialoguePanel;
     public TMP_Text dialogueText, nameText;
 
-    private int dialogueIndex;
-    private bool isTyping, isDialogueActive;
+    private int dialogueIndex = 0;
+    private bool isTyping;
+    private bool isDialogueActive = false;
 
+    public float damage = 10;
+    public float health = 100;
+
+    public GameObject EventSystem;
+    private BattleSystem battleSystem;
+
+    public void Start()
+    {
+        battleSystem = EventSystem.GetComponent<BattleSystem>();
+    }
 
 
     public bool CanInteract()
@@ -57,7 +68,7 @@ public class NPC : MonoBehaviour, Interactable
         isDialogueActive = true;
         dialogueIndex = 0;
 
-        nameText.SetText(dialogueData.name);
+        nameText.SetText(dialogueData.npcName);
         dialoguePanel.SetActive(true);
 
         StartCoroutine(TypeLine());
@@ -90,5 +101,7 @@ public class NPC : MonoBehaviour, Interactable
         isDialogueActive = false;
         dialogueText.SetText("");
         dialoguePanel.SetActive(false);
+
+        battleSystem.StartBattle(this.gameObject);
     }
 }

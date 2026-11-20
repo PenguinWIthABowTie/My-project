@@ -21,7 +21,7 @@ public class InteractableDetector : MonoBehaviour
         //Detect();
         CheckForInteractable();
 
-        if(Input.GetKeyDown(KeyCode.E))
+        if (Input.GetButtonDown("Interact"))
         {
             Debug.Log("E");
             if (currentInteractable != null)

@@ -16,5 +16,4 @@ public class NPCDialogue : ScriptableObject
 
 
 
-
 }
