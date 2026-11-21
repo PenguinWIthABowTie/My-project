@@ -12,7 +12,7 @@ public class BattleSystem : MonoBehaviour
 
     //public Transform playerBattlePos;
     //public Transform enemyBattlePos;
-    public Button QTIbutton;
+    public GameObject QTIbutton;
     public Transform parentCanvas;
 
     public BattleState state;
