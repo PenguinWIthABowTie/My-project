@@ -1113,8 +1113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleSystem
   player: {fileID: 1165016461}
-  QTIbutton: {fileID: 0}
-  parentCanvas: {fileID: 0}
+  QTIbutton: {fileID: 3183135309505981353, guid: 0ec8d2d83526d44499d048b2fa9b1022, type: 3}
+  parentCanvas: {fileID: 1644212830}
   state: 0
 --- !u!1 &394029593
 GameObject:
@@ -4115,7 +4115,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1502441313
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5386,6 +5386,7 @@ GameObject:
   - component: {fileID: 1950559931}
   - component: {fileID: 1950559930}
   - component: {fileID: 1950559934}
+  - component: {fileID: 1950559935}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -5507,6 +5508,25 @@ MonoBehaviour:
   damage: 10
   health: 100
   EventSystem: {fileID: 309278185}
+--- !u!114 &1950559935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950559928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e4b515285b711488f2c0f0f063a838, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  preparationTime: 2
+  enemyDamage: 20
+  keyPrompt: {fileID: 0}
+  keyPrefab: {fileID: 0}
+  perfectWindow: 0.05
+  goodWindow: 0.2
+  lateWindow: 0.5
 --- !u!1 &1967094596
 GameObject:
   m_ObjectHideFlags: 0
