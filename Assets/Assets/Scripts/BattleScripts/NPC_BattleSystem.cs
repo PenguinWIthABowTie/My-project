@@ -12,8 +12,9 @@ public class NPC_BattleSystem : MonoBehaviour
     [SerializeField] private float perfectWindow = 0.05f;
     [SerializeField] private float goodWindow = 0.2f;
     [SerializeField] private float lateWindow = 0.5f;
+    [SerializeField] private float missWindow = 1f;
 
-    //[SerializeField] private PlayerHealth playerHealth;
+    [SerializeField] private PlayerStatsScript playerStatsScript;
 
     private KeyCode[] possibleKeys = { KeyCode.W, KeyCode.A, KeyCode.S, KeyCode.D };
 
@@ -22,6 +23,8 @@ public class NPC_BattleSystem : MonoBehaviour
 
     public void StartBattle()
     {
+        keyPrompt = Instantiate(keyPrefab, transform.position, Quaternion.identity).GetComponent<TMP_Text>();
+
         if (isInBattle)
             return;
 
@@ -118,7 +121,7 @@ public class NPC_BattleSystem : MonoBehaviour
 
         Debug.Log($"Player takes {damage} damage.");
 
-        //playerHealth.TakeDamage(damage);
+        playerStatsScript.TakeDamage(damage);
     }
 
 

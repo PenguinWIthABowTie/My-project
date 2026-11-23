@@ -8,7 +8,7 @@ public class BattleSystem : MonoBehaviour
 
     public GameObject player;
     private GameObject currentEnemy;
-    private NPC_Controller npc_Controller;
+    private NPCDialogueController npc_Controller;
 
     //public Transform playerBattlePos;
     //public Transform enemyBattlePos;
@@ -19,7 +19,7 @@ public class BattleSystem : MonoBehaviour
     public void StartBattle(GameObject enemy)
     {
         currentEnemy = enemy;
-        npc_Controller = currentEnemy.GetComponent<NPC_Controller>();
+        npc_Controller = currentEnemy.GetComponent<NPCDialogueController>();
 
 
         state = BattleState.START;

@@ -1,8 +1,10 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
+using System;
 
-public class NPC_Controller : MonoBehaviour, Interactable
+public class NPCDialogueController : MonoBehaviour, Interactable
 {
     public NPCDialogue dialogueData;
     public GameObject dialoguePanel;
@@ -15,12 +17,12 @@ public class NPC_Controller : MonoBehaviour, Interactable
     public float damage = 10;
     public float health = 100;
 
-    public GameObject EventSystem;
-    private BattleSystem battleSystem;
+    public UnityEvent OnDialogueEnd;
+
 
     public void Start()
     {
-        battleSystem = EventSystem.GetComponent<BattleSystem>();
+
     }
 
 
@@ -102,6 +104,6 @@ public class NPC_Controller : MonoBehaviour, Interactable
         dialogueText.SetText("");
         dialoguePanel.SetActive(false);
 
-        battleSystem.StartBattle(this.gameObject);
+        OnDialogueEnd.Invoke();
     }
 }
