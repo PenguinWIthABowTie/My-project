@@ -2,7 +2,7 @@ using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 
-
+public enum PlayerState { GAMEPLAY, BATTLE, PAUSE }
 public class PlayerStatsScript : MonoBehaviour
 {
     public float maxHealth = 100f;

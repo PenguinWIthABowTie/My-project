@@ -5580,44 +5580,44 @@ MonoBehaviour:
   enemyDamage: 10
   keyPrefab: {fileID: 3183135309505981353, guid: 0ec8d2d83526d44499d048b2fa9b1022, type: 3}
   qteParent: {fileID: 1644212830}
-  perfectWindow: 0.5
-  goodWindow: 1.5
-  okayWindow: 3
+  perfectWindow: 0.2
+  goodWindow: 0.8
+  okayWindow: 1.5
   possibleKeys: 77000000610000007300000064000000i
   patterns:
   - patternName: pattern1
     prompts:
     - spawnDelay: 0
+      position: {x: -200, y: -88}
+      duration: 2.5
+    - spawnDelay: 0
       position: {x: 0, y: 0}
-      duration: 5
-    - spawnDelay: 5
-      position: {x: 0, y: 0}
-      duration: 5
-    - spawnDelay: 10
-      position: {x: 0, y: 0}
-      duration: 5
+      duration: 2.5
+    - spawnDelay: 0
+      position: {x: 200, y: 88}
+      duration: 2.5
   - patternName: pattern2
     prompts:
     - spawnDelay: 0
-      position: {x: 0, y: 0}
-      duration: 5
-    - spawnDelay: 5
-      position: {x: 0, y: 0}
-      duration: 5
-    - spawnDelay: 10
-      position: {x: 0, y: 0}
-      duration: 5
+      position: {x: -150, y: 55}
+      duration: 2.5
+    - spawnDelay: 0
+      position: {x: 0, y: -120}
+      duration: 2.5
+    - spawnDelay: 0
+      position: {x: 150, y: 55}
+      duration: 2.5
   - patternName: pattern3
     prompts:
     - spawnDelay: 0
+      position: {x: 200, y: 88}
+      duration: 2.5
+    - spawnDelay: 0
       position: {x: 0, y: 0}
-      duration: 5
-    - spawnDelay: 5
-      position: {x: 0, y: 0}
-      duration: 5
-    - spawnDelay: 10
-      position: {x: 0, y: 0}
-      duration: 5
+      duration: 2.5
+    - spawnDelay: 0
+      position: {x: -200, y: -88}
+      duration: 2.5
   playerStatsScript: {fileID: 1258162857}
 --- !u!114 &1950559935
 MonoBehaviour:
