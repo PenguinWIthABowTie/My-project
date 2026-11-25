@@ -3426,6 +3426,7 @@ GameObject:
   - component: {fileID: 1258162855}
   - component: {fileID: 1258162856}
   - component: {fileID: 1258162857}
+  - component: {fileID: 1258162858}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3621,9 +3622,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 363362386a8e106469301fc3c8f0c4c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  state: 0
   maxHealth: 100
   currentHealth: 0
   healthbarSlider: {fileID: 2134558885}
+--- !u!114 &1258162858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258162844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d2f7bc7141137d46bf003ba2a186869, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1404392020
 GameObject:
   m_ObjectHideFlags: 0
@@ -5462,6 +5476,7 @@ GameObject:
   - component: {fileID: 1950559930}
   - component: {fileID: 1950559935}
   - component: {fileID: 1950559934}
+  - component: {fileID: 1950559936}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -5576,6 +5591,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a96c5268d068ea4781857a4863ecbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC_BattleScript2
+  OnBattleEnd:
+    m_PersistentCalls:
+      m_Calls: []
   preparationTime: 4
   enemyDamage: 10
   keyPrefab: {fileID: 3183135309505981353, guid: 0ec8d2d83526d44499d048b2fa9b1022, type: 3}
@@ -5587,35 +5605,35 @@ MonoBehaviour:
   patterns:
   - patternName: pattern1
     prompts:
-    - spawnDelay: 0
+    - spawnDelay: 0.2
       position: {x: -200, y: -88}
       duration: 2.5
-    - spawnDelay: 0
+    - spawnDelay: 0.2
       position: {x: 0, y: 0}
       duration: 2.5
-    - spawnDelay: 0
+    - spawnDelay: 0.2
       position: {x: 200, y: 88}
       duration: 2.5
   - patternName: pattern2
     prompts:
-    - spawnDelay: 0
+    - spawnDelay: 0.2
       position: {x: -150, y: 55}
       duration: 2.5
-    - spawnDelay: 0
+    - spawnDelay: 0.2
       position: {x: 0, y: -120}
       duration: 2.5
-    - spawnDelay: 0
+    - spawnDelay: 0.2
       position: {x: 150, y: 55}
       duration: 2.5
   - patternName: pattern3
     prompts:
-    - spawnDelay: 0
+    - spawnDelay: 0.2
       position: {x: 200, y: 88}
       duration: 2.5
-    - spawnDelay: 0
+    - spawnDelay: 0.2
       position: {x: 0, y: 0}
       duration: 2.5
-    - spawnDelay: 0
+    - spawnDelay: 0.2
       position: {x: -200, y: -88}
       duration: 2.5
   playerStatsScript: {fileID: 1258162857}
@@ -5652,6 +5670,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1950559936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950559928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8b0f45f634e7da4f8afc41c286599aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  health: 100
 --- !u!1 &1967094596
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,14 +1,17 @@
 using UnityEngine;
+using UnityEngine.Events;
 using TMPro;
 using System.Collections;
 
 public class NPC_BattleScript2 : MonoBehaviour
 {
+    public UnityEvent OnBattleEnd;
+
     [System.Serializable]
     public class QTEPrompt
     {
         [Tooltip("Delay before this prompt appears")]
-        public float spawnDelay = 0f;
+        public float spawnDelay = 0.2f;
 
         [Tooltip("Position inside the QTE Canvas")]
         public Vector2 position;
@@ -57,6 +60,7 @@ public class NPC_BattleScript2 : MonoBehaviour
 
     public void StartBattle()
     {
+        playerStatsScript.Battle();
         if (isInBattle)
             return;
 
@@ -74,15 +78,24 @@ public class NPC_BattleScript2 : MonoBehaviour
 
         isInBattle = true;
 
-        StartCoroutine(EnemyTurn());
+        StartCoroutine(PlayerTurn());
     }
 
-    private IEnumerator EnemyTurn()
+    private IEnumerator PlayerTurn()
     {
+
         Debug.Log("Enemy is preparing an attack...");
 
         yield return new WaitForSeconds(preparationTime);
 
+        StartCoroutine(EnemyTurn());
+    }
+
+
+
+
+    private IEnumerator EnemyTurn()
+    {
         // Randomly choose one of the predefined patterns
         int randomPattern = Random.Range(0, patterns.Length);
 
@@ -100,11 +113,12 @@ public class NPC_BattleScript2 : MonoBehaviour
 
             yield return StartCoroutine(PerformQTE(prompt));
         }
-
         isAttacking = false;
-        isInBattle = false;
+        //isInBattle = false;
 
         Debug.Log("Enemy attack finished!");
+        StartCoroutine (PlayerTurn());
+        
     }
 
     private IEnumerator PerformQTE(QTEPrompt prompt)
@@ -223,4 +237,11 @@ public class NPC_BattleScript2 : MonoBehaviour
         playerStatsScript.TakeDamage(damage);
     }
 
+    public void EndBattle()
+    {
+        playerStatsScript.GamePlay();
+        OnBattleEnd.Invoke();
+        isInBattle = false;
+        StopAllCoroutines();
+    }
 }
