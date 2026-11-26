@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
 using System.Collections;
@@ -57,6 +58,9 @@ public class NPC_BattleScript2 : MonoBehaviour
     private PlayerStatsScript playerStatsScript;
     private PlayerBattleScript playerBattleScript;
     private EnemyHealth enemyHealth;
+    public GameObject enemyHealthSlider;
+
+    public GameObject playerBattlePos;
 
     private bool isInBattle;
     private bool EnemiesTurn;
@@ -71,6 +75,10 @@ public class NPC_BattleScript2 : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerStatsScript = player.GetComponent<PlayerStatsScript>();
         playerBattleScript = player.GetComponent<PlayerBattleScript>();
+
+
+        enemyHealthSlider.SetActive(true);
+        player.transform.position = playerBattlePos.transform.position;
 
 
         playerStatsScript.Battle();
@@ -268,6 +276,7 @@ public class NPC_BattleScript2 : MonoBehaviour
 
     public void EndBattle()
     {
+        enemyHealthSlider.SetActive(false);
         playerStatsScript.GamePlay();
         OnBattleEnd.Invoke();
         isInBattle = false;

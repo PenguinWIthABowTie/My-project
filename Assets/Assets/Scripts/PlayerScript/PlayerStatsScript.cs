@@ -1,4 +1,3 @@
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +13,8 @@ public class PlayerStatsScript : MonoBehaviour
     public float maxHealth = 100f;
     public float currentHealth;
     public Slider healthbarSlider;
+    public GameObject battleCamera;
+    public GameObject gameplayCamera;
 
 
     void Start()
@@ -21,6 +22,8 @@ public class PlayerStatsScript : MonoBehaviour
         interactableDetector = GetComponent<InteractableDetector>();
         movementController = GetComponent<MovementController>();
         playerBattleScript = GetComponent<PlayerBattleScript>();
+
+        gameplayCamera = GameObject.FindGameObjectWithTag("MainCamera");
 
         currentHealth = maxHealth;
         healthbarSlider.maxValue = maxHealth;
@@ -39,6 +42,9 @@ public class PlayerStatsScript : MonoBehaviour
         movementController.enabled = false;
         playerBattleScript.enabled = true;
 
+        battleCamera.SetActive(true);
+
+        gameplayCamera.SetActive(false);
     }
 
     public void GamePlay()
@@ -48,6 +54,9 @@ public class PlayerStatsScript : MonoBehaviour
         interactableDetector.enabled = true;
         movementController.enabled = true;
         playerBattleScript.enabled = false;
+
+        battleCamera.SetActive(false);
+        gameplayCamera.SetActive(true);
     }
 
     public void Pause()
@@ -89,6 +98,6 @@ public class PlayerStatsScript : MonoBehaviour
         playerBattleScript.enabled = false;
         Debug.Log("Player Died!");
 
-        // Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
