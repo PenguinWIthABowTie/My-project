@@ -52,14 +52,27 @@ public class NPC_BattleScript2 : MonoBehaviour
     [Header("QTE Patterns")]
     [SerializeField] private QTEPattern[] patterns;
 
-    [Header("Player")]
-    [SerializeField] private PlayerStatsScript playerStatsScript;
+    private GameObject player;
+    private GameObject currentEnemy;
+    private PlayerStatsScript playerStatsScript;
+    private PlayerBattleScript playerBattleScript;
+    private EnemyHealth enemyHealth;
 
     private bool isInBattle;
-    private bool isAttacking;
+    private bool EnemiesTurn;
 
-    public void StartBattle()
+    public bool defenceUp;
+    public float defence;
+
+    public void StartBattle(GameObject enemy)
     {
+        currentEnemy = enemy;
+        enemyHealth = enemy.GetComponent<EnemyHealth>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerStatsScript = player.GetComponent<PlayerStatsScript>();
+        playerBattleScript = player.GetComponent<PlayerBattleScript>();
+
+
         playerStatsScript.Battle();
         if (isInBattle)
             return;
@@ -83,6 +96,8 @@ public class NPC_BattleScript2 : MonoBehaviour
 
     private IEnumerator PlayerTurn()
     {
+        EnemiesTurn = false;
+        playerBattleScript.PlayersTurn = true;
 
         Debug.Log("Enemy is preparing an attack...");
 
@@ -96,14 +111,15 @@ public class NPC_BattleScript2 : MonoBehaviour
 
     private IEnumerator EnemyTurn()
     {
+        EnemiesTurn = true;
+        playerBattleScript.PlayersTurn = false;
+
         // Randomly choose one of the predefined patterns
         int randomPattern = Random.Range(0, patterns.Length);
 
         QTEPattern selectedPattern = patterns[randomPattern];
 
         Debug.Log("Enemy selected: " + selectedPattern.patternName);
-
-        isAttacking = true;
 
         // Execute the selected pattern
         foreach (QTEPrompt prompt in selectedPattern.prompts)
@@ -112,9 +128,10 @@ public class NPC_BattleScript2 : MonoBehaviour
             yield return new WaitForSeconds(prompt.spawnDelay);
 
             yield return StartCoroutine(PerformQTE(prompt));
+
+
+            defenceUp = false;
         }
-        isAttacking = false;
-        //isInBattle = false;
 
         Debug.Log("Enemy attack finished!");
         StartCoroutine (PlayerTurn());
@@ -227,8 +244,20 @@ public class NPC_BattleScript2 : MonoBehaviour
         }
     }
 
+    public void EnemyDamage(int damage)
+    {
+        enemyHealth.TakeDamage(damage);
+    }
+
+
     private void ApplyDamage(float damage)
     {
+        if (defenceUp)
+        {
+            Debug.Log("Defence is up");
+            damage = damage / defence;
+        }
+
         if (damage <= 0)
             return;
 

@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.Rendering;
+using JetBrains.Annotations;
 
 public class NPC_BattleSystem : MonoBehaviour
 {
@@ -14,15 +16,23 @@ public class NPC_BattleSystem : MonoBehaviour
     [SerializeField] private float lateWindow = 0.5f;
     [SerializeField] private float missWindow = 1f;
 
-    [SerializeField] private PlayerStatsScript playerStatsScript;
+    private GameObject player;
+    private PlayerStatsScript playerStatsScript;
+    private PlayerBattleScript playerBattleScript;
 
     private KeyCode[] possibleKeys = { KeyCode.W, KeyCode.A, KeyCode.S, KeyCode.D };
 
     private bool isInBattle;
-    private bool isAttacking;
+    private bool EnemiesTurn;
 
     public void StartBattle()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerStatsScript = player.GetComponent<PlayerStatsScript>();
+        playerBattleScript = player.GetComponent<PlayerBattleScript>();
+
+
+
         keyPrompt = Instantiate(keyPrefab, transform.position, Quaternion.identity).GetComponent<TMP_Text>();
 
         if (isInBattle)
@@ -30,23 +40,26 @@ public class NPC_BattleSystem : MonoBehaviour
 
         isInBattle = true;
 
-        StartCoroutine(EnemyTurn());
+
+        StartCoroutine(PlayerTurn());
+    }
+
+    private IEnumerator PlayerTurn()
+    {
+
+        EnemiesTurn = false;
+        playerBattleScript.PlayersTurn = true;
+
+        yield return new WaitForSeconds(preparationTime);
+
+        yield return StartCoroutine(EnemyTurn());
+
     }
 
     private IEnumerator EnemyTurn()
     {
-        yield return new WaitForSeconds(preparationTime);
-
-        yield return StartCoroutine(PerformQTE());
-
-        isAttacking = false;
-
-        isInBattle = false;
-    }
-
-    private IEnumerator PerformQTE()
-    {
-        isAttacking = true;
+        EnemiesTurn = true;
+        playerBattleScript.PlayersTurn = false;
 
         KeyCode requireKey = possibleKeys[Random.Range(0, possibleKeys.Length)];
 

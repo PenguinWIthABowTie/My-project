@@ -5,6 +5,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private int health = 100;
     private NPC_BattleScript2 battleScript2;
 
+
     public void Start()
     {
         battleScript2 = GetComponent<NPC_BattleScript2>();
@@ -12,6 +13,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        //Debug.Log($"Enemy Takes {damage} Damage");
         health -= damage;
         if (health <= 0)
         {

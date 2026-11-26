@@ -8,14 +8,17 @@ public class PlayerStatsScript : MonoBehaviour
     public PlayerState state;
     private MovementController movementController;
     private PlayerBattleScript playerBattleScript;
+    private InteractableDetector interactableDetector;
     private ThirdPersonCamera thirdPersonCamera;
 
     public float maxHealth = 100f;
     public float currentHealth;
     public Slider healthbarSlider;
 
+
     void Start()
     {
+        interactableDetector = GetComponent<InteractableDetector>();
         movementController = GetComponent<MovementController>();
         playerBattleScript = GetComponent<PlayerBattleScript>();
 
@@ -32,6 +35,7 @@ public class PlayerStatsScript : MonoBehaviour
     {
         state = PlayerState.BATTLE;
 
+        interactableDetector.enabled = false;
         movementController.enabled = false;
         playerBattleScript.enabled = true;
 
@@ -41,6 +45,7 @@ public class PlayerStatsScript : MonoBehaviour
     {
         state = PlayerState.GAMEPLAY;
 
+        interactableDetector.enabled = true;
         movementController.enabled = true;
         playerBattleScript.enabled = false;
     }
@@ -49,6 +54,7 @@ public class PlayerStatsScript : MonoBehaviour
     {
         state = PlayerState.PAUSE;
 
+        interactableDetector.enabled = false;
         movementController.enabled = false;
         playerBattleScript.enabled = false;
     }
@@ -78,6 +84,7 @@ public class PlayerStatsScript : MonoBehaviour
 
     void Die()
     {
+        interactableDetector.enabled = false;
         movementController.enabled = false;
         playerBattleScript.enabled = false;
         Debug.Log("Player Died!");

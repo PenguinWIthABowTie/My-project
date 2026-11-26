@@ -23,7 +23,6 @@ public class InteractableDetector : MonoBehaviour
 
         if (Input.GetButtonDown("Interact"))
         {
-            Debug.Log("E");
             if (currentInteractable != null)
             {
                 currentInteractable.InteractWith();

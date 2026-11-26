@@ -3633,11 +3633,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258162844}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d2f7bc7141137d46bf003ba2a186869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  PlayersTurn: 0
+  damage: 10
+  npc_BattleScript2: {fileID: 1950559934}
 --- !u!1 &1404392020
 GameObject:
   m_ObjectHideFlags: 0
@@ -5598,28 +5601,28 @@ MonoBehaviour:
   enemyDamage: 10
   keyPrefab: {fileID: 3183135309505981353, guid: 0ec8d2d83526d44499d048b2fa9b1022, type: 3}
   qteParent: {fileID: 1644212830}
-  perfectWindow: 0.2
+  perfectWindow: 0.3
   goodWindow: 0.8
   okayWindow: 1.5
   possibleKeys: 77000000610000007300000064000000i
   patterns:
   - patternName: pattern1
     prompts:
-    - spawnDelay: 0.2
+    - spawnDelay: 0.4
       position: {x: -200, y: -88}
       duration: 2.5
     - spawnDelay: 0.2
       position: {x: 0, y: 0}
       duration: 2.5
-    - spawnDelay: 0.2
+    - spawnDelay: 0.3
       position: {x: 200, y: 88}
       duration: 2.5
   - patternName: pattern2
     prompts:
-    - spawnDelay: 0.2
+    - spawnDelay: 0.1
       position: {x: -150, y: 55}
       duration: 2.5
-    - spawnDelay: 0.2
+    - spawnDelay: 0.4
       position: {x: 0, y: -120}
       duration: 2.5
     - spawnDelay: 0.2
@@ -5630,13 +5633,14 @@ MonoBehaviour:
     - spawnDelay: 0.2
       position: {x: 200, y: 88}
       duration: 2.5
-    - spawnDelay: 0.2
+    - spawnDelay: 0.4
       position: {x: 0, y: 0}
       duration: 2.5
-    - spawnDelay: 0.2
+    - spawnDelay: 0.1
       position: {x: -200, y: -88}
       duration: 2.5
-  playerStatsScript: {fileID: 1258162857}
+  defenceUp: 0
+  defence: 2
 --- !u!114 &1950559935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5661,10 +5665,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1950559934}
         m_TargetAssemblyTypeName: NPC_BattleScript2, Assembly-CSharp
         m_MethodName: StartBattle
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1950559928}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
